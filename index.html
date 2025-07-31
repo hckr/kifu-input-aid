@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kifu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="goban-wrapper">
+      <table class="goban"></table>
+    </div>
+    <div class="others-wrapper">
+      <!-- <label
+        >Moves in place of other moves:
+        <textarea
+          class="moves-in-place-of-other"
+          placeholder="Separated by newlines, like:&#10;5:24&#10;32:100,121"
+          rows="5"
+          cols="30"
+        ></textarea>
+      </label> -->
+      <label
+        >Status:
+        <textarea readonly class="status" rows="5" cols="30"></textarea>
+      </label>
+      <label
+        >SGF:
+        <textarea readonly class="sgf" rows="5" cols="30"></textarea>
+      </label>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
