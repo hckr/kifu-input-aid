@@ -92,6 +92,10 @@ body {
   gap: 20px;
 }
 
+.others-wrapper input {
+  width: 100%;
+}
+
 textarea {
   display: block;
   margin-top: 5px;
