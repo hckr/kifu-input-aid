@@ -59,8 +59,6 @@ function updateSGF() {
     }
   });
 
-  console.log(movesToCoords);
-
   const missingMoves = [];
 
   // moves in place of other moves

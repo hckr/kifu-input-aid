@@ -19,7 +19,7 @@ body {
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 21px;
 }
 
 .goban {
@@ -34,11 +34,11 @@ body {
 
 .goban td,
 .goban th {
-  min-width: 50px;
-  width: 50px;
-  min-height: 50px;
-  height: 50px;
-  line-height: 50px;
+  min-width: 45px;
+  width: 45px;
+  min-height: 45px;
+  height: 45px;
+  line-height: 45px;
   transform: translate(-50%, -50%);
 }
 
@@ -76,6 +76,10 @@ body {
   opacity: 1;
 }
 
+.goban input:focus {
+  border: 2px dashed #f8a;
+}
+
 .goban input.stone-black {
   background: #224;
   color: #eed;
@@ -101,4 +105,17 @@ textarea {
   margin-top: 5px;
   padding: 4px 6px;
   resize: vertical;
+}
+
+tr[data-row='3'] td[data-col='3'],
+tr[data-row='3'] td[data-col='9'],
+tr[data-row='3'] td[data-col='15'],
+tr[data-row='9'] td[data-col='3'],
+tr[data-row='9'] td[data-col='9'],
+tr[data-row='9'] td[data-col='15'],
+tr[data-row='15'] td[data-col='3'],
+tr[data-row='15'] td[data-col='9'],
+tr[data-row='15'] td[data-col='15'] {
+  outline: 1px solid #3338;
+  border-radius: 50%;
 }
