@@ -4,6 +4,9 @@ const movesInPlaceOfOtherTextarea = document.querySelector(
 );
 const statusTextarea = document.querySelector('.status');
 const sgfTextarea = document.querySelector('.sgf');
+const sgfButtonsWrapper = document.querySelector('.sgf-buttons-wrapper');
+const sgfCopyToClipboard = document.querySelector('.sgf-copy');
+const sgfLink = document.querySelector('.sgf-link');
 
 const headerRow = document.createElement('tr');
 headerRow.innerHTML = [].map
@@ -38,6 +41,10 @@ gobanTable.addEventListener('input', (e) => {
 
 document.addEventListener('input', () => {
   updateSGF();
+});
+
+sgfCopyToClipboard.addEventListener('click', () => {
+  navigator.clipboard.writeText(sgfTextarea.value);
 });
 
 function updateSGF() {
@@ -106,8 +113,11 @@ function updateSGF() {
 
   if (error) {
     sgfTextarea.value = '';
+    sgfButtonsWrapper.style.display = 'none';
     return;
   }
+
+  sgfButtonsWrapper.style.display = '';
 
   sgfTextarea.value =
     '(' +
@@ -116,7 +126,12 @@ function updateSGF() {
       .map((coords, ind) => `;${ind % 2 == 0 ? 'B' : 'W'}[${coords}]`)
       .join('\n') +
     ')';
+
+  sgfLink.download = 'game.sgf';
+  sgfLink.href = 'data:,' + encodeURIComponent(sgfTextarea.value);
 }
+
+updateSGF();
 
 function sgfHeader() {
   const gameName = document.querySelector('.game-name').value.trim();
