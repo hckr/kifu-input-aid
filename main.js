@@ -1,3 +1,4 @@
+const gobanWrapper = document.querySelector('.goban-wrapper');
 const gobanTable = document.querySelector('.goban');
 const movesInPlaceOfOtherTextarea = document.querySelector(
   '.moves-in-place-of-other'
@@ -7,6 +8,9 @@ const sgfTextarea = document.querySelector('.sgf');
 const sgfButtonsWrapper = document.querySelector('.sgf-buttons-wrapper');
 const sgfCopyToClipboard = document.querySelector('.sgf-copy');
 const sgfLink = document.querySelector('.sgf-link');
+const autoScaleGobanCheckbox = document.getElementById(
+  'auto-scale-goban-checkbox'
+);
 
 const headerRow = document.createElement('tr');
 headerRow.innerHTML = [].map
@@ -46,6 +50,20 @@ document.addEventListener('input', () => {
 sgfCopyToClipboard.addEventListener('click', () => {
   navigator.clipboard.writeText(sgfTextarea.value);
 });
+
+autoScaleGobanCheckbox.addEventListener('change', (e) => {
+  handleAutoScale(e.target.checked);
+});
+
+autoScaleGobanCheckbox.checked =
+  JSON.parse(localStorage.getItem('auto-scale-goban')) ?? true;
+
+handleAutoScale(autoScaleGobanCheckbox.checked);
+
+function handleAutoScale(enabled) {
+  localStorage.setItem('auto-scale-goban', JSON.stringify(enabled));
+  gobanWrapper.classList.toggle('auto-scale', enabled);
+}
 
 function updateSGF() {
   const sgfLetters = 'abcdefghijklmnopqrs';
